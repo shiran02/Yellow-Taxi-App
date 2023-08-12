@@ -15,11 +15,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   ////default country code...
-  final countryPicker = const  FlCountryCodePicker();
+  final countryPicker = const FlCountryCodePicker();
 
-  CountryCode countryCode = const CountryCode(name: "Sri Lanka", code: "LK", dialCode: "+94");
+  CountryCode countryCode =
+      const CountryCode(name: "Sri Lanka", code: "LK", dialCode: "+94");
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +30,19 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ////// background part
-                backgroundIntro(),
-                ////// login part
-                loginWidget(countryCode,() async {
+            children: [
+              ////// background part
+              backgroundIntro(),
+              ////// login part
+              loginWidget(
+                countryCode,
+                () async {
                   final code = await countryPicker.showPicker(context: context);
-                  if (code != null)  countryCode = code;
-                  setState(() {
-
-                  });
+                  if (code != null) countryCode = code;
+                  setState(() {});
                 },
-    ),
-
-              ],
+              ),
+            ],
           ),
         ),
       ),
